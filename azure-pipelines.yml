@@ -18,7 +18,7 @@ steps:
 
 - script: |
     cd NUnit-BrowserStack
-    dotnet test --list-tests
+    nunit-console
   displayName: 'Execute build'
 
 
