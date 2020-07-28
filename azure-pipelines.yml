@@ -18,7 +18,9 @@ steps:
 
 - script: |
     cd NUnit-BrowserStack
-    nunit-console
+    pwd
+    ls
+    dotnet test
   displayName: 'Execute build'
 
 
