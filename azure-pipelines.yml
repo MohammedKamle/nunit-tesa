@@ -15,12 +15,17 @@ steps:
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
 
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: 
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
 
 - script: |
-    cd NUnit-BrowserStack
-    pwd
-    ls
     nuget install NUnit.ConsoleRunner
+    cd NUnit-BrowserStack
     ls
     mono NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/TestSuite.dll
   displayName: 'Execute build'
