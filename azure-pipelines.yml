@@ -20,7 +20,6 @@ steps:
     cd NUnit-BrowserStack
     pwd
     ls
-    dotnet build --configuration Release
     nuget install NUnit.ConsoleRunner
     mono NUnit-BrowserStack/NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/bin/Release/SingleTest.dll
   displayName: 'Execute build'
