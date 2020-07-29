@@ -11,6 +11,10 @@ pool:
 
       
 steps:
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
 - task: BrowserStackConfig@0
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
