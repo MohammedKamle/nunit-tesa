@@ -26,5 +26,10 @@ steps:
     ls
     mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe obj/Release/SingleTest.dll
   displayName: 'Execute build'
-
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'build_folder'
+    publishLocation: 'pipeline'
 
