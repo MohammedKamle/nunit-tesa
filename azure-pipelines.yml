@@ -27,9 +27,6 @@ steps:
     cd obj/Debug
     ls
     cd ../..
-    cd obj/Release
-    ls
-    cd ../..
     mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe obj/Debug/SingleTest.dll
   displayName: 'Execute build'
   
