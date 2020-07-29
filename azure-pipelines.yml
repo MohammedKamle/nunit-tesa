@@ -17,12 +17,7 @@ steps:
 
 
 - script: |
-    cd NUnit-BrowserStack
-    pwd
-    ls
-    nuget install NUnit.ConsoleRunner
-    ls
-    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/TestSuite.dll
+    mono NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/TestSuite.dll
   displayName: 'Execute build'
 
 
