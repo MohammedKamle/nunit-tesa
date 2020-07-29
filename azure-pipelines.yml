@@ -21,7 +21,8 @@ steps:
     pwd
     ls
     nuget install NUnit.ConsoleRunner
-    mono NUnit-BrowserStack/NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/bin/Release/SingleTest.dll
+    ls
+    mono NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/TestSuite.dll
   displayName: 'Execute build'
 
 
