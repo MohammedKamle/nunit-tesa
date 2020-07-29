@@ -15,19 +15,24 @@ steps:
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
 
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 
+
 - task: NuGetToolInstaller@1
   inputs:
     versionSpec: 
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-
 - script: |
-    nuget install NUnit.ConsoleRunner
+    dotnet build
     cd NUnit-BrowserStack
-    ls
-    mono NUnit.ConsoleRunner.*/tools/nunit3-console.exe NUnit-BrowserStack/TestSuite.dll
+    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe bin/Debug/SingleTest.dll
   displayName: 'Execute build'
-
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'build_folder'
+    publishLocation: 'pipeline'
 
