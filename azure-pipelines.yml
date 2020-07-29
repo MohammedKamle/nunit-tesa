@@ -15,19 +15,19 @@ steps:
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
 
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 
+
 - task: NuGetToolInstaller@1
   inputs:
     versionSpec: 
 
 - script: |
     dotnet build
-    nuget install NUnit.ConsoleRunner
     cd NUnit-BrowserStack
-    ls
-    cd obj/Debug
-    ls
-    cd ../..
-    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe obj/Debug/SingleTest.dll
+    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe bin/Debug/SingleTest.dll
   displayName: 'Execute build'
   
 - task: PublishPipelineArtifact@1
