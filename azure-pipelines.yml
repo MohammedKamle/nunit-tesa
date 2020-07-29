@@ -19,11 +19,8 @@ steps:
   inputs:
     versionSpec: 
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-
 - script: |
+    dotnet build
     nuget install NUnit.ConsoleRunner
     cd NUnit-BrowserStack
     ls
