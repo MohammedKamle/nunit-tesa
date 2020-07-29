@@ -27,7 +27,7 @@ steps:
 - script: |
     dotnet build
     cd NUnit-BrowserStack
-    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe bin/Debug/SingleTest.dll
+    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe TestSuite.dll
   displayName: 'Execute build'
   
 - task: PublishPipelineArtifact@1
