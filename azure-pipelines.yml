@@ -28,7 +28,6 @@ steps:
   inputs:
     solution: '**/*.sln'
     clean: true
-    restoreNugetPackages: true
 
 - script: |
     cd NUnit-BrowserStack
