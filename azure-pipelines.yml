@@ -24,8 +24,13 @@ steps:
   inputs:
     versionSpec: 
 
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    clean: true
+    restoreNugetPackages: true
+
 - script: |
-    dotnet build
     cd NUnit-BrowserStack
     mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe TestSuite.dll
   displayName: 'Execute build'
