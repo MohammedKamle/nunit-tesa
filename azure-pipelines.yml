@@ -7,53 +7,37 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
 
-      
 steps:
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
 
 - task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
+  displayName: 'dotnet build'
+
 - task: BrowserStackConfig@0
+  displayName: 'BrowserStack configuration setup'
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
 
-- task: DotNetCoreCLI@2
-  displayName: dotnet restore
+- task: VSTest@2
+  displayName: 'VsTest - testAssemblies'
   inputs:
-    command: restore
-    projects: '**/*.csproj'
-    includeNuGetOrg: true
-    
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: 
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
 
-- task: NuGetToolInstaller@1
-  inputs:
-    versionSpec: 
-
-- task: MSBuild@1
-  inputs:
-    solution: '**/*.sln'
-    clean: true
-
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: build
-    projects: '**/*.csproj'
-
-- script: |
-    cd NUnit-BrowserStack
-    mono ../NUnit.ConsoleRunner.*/tools/nunit3-console.exe bin/Debug/SingleTest.dll
-  displayName: 'Execute build'
-  
 - task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
+  continueOnError: true
+  condition: succeededOrFailed()
   inputs:
     targetPath: '$(Pipeline.Workspace)'
-    artifact: 'build_folder'
-    publishLocation: 'pipeline'
+    publishLocation: 'pipeline' 
+  
+
 
