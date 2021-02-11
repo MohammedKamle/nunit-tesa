@@ -5,10 +5,9 @@
 
 trigger:
 - master
-  
+
 pool:
-  name: Azure Pipelines
-  demands: vstest
+  vmImage: 'windows-2019'
 
 steps:
 - task: NuGetCommand@2
