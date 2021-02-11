@@ -36,7 +36,7 @@ steps:
   continueOnError: true
   condition: succeededOrFailed()
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Pipeline.Workspace)/s'
     publishLocation: 'pipeline' 
   
 
