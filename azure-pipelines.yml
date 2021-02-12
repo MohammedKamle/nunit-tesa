@@ -20,7 +20,9 @@ steps:
   displayName: 'BrowserStack configuration setup'
   inputs:
     BrowserStackServiceEndPoint: 'BStack Demo Account'
+    browserstackLocal: true
 
+    
 - task: VSTest@2
   displayName: 'VsTest - testAssemblies'
   inputs:
