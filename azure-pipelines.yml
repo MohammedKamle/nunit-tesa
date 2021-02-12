@@ -31,13 +31,6 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
-  continueOnError: true
-  condition: succeededOrFailed()
-  inputs:
-    targetPath: '$(Pipeline.Workspace)/s'
-    publishLocation: 'pipeline' 
   
 
 
