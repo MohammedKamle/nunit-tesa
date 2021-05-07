@@ -19,7 +19,7 @@ steps:
 - task: BrowserStackConfig@0
   displayName: 'BrowserStack configuration setup'
   inputs:
-    BrowserStackServiceEndPoint: 'BStack Demo Account'
+    BrowserStackServiceEndPoint: 'BrowserStack Conn'
     browserstackLocal: true
 
     
